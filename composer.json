@@ -1,0 +1,50 @@
+{
+    "name": "bentools/hostname-extractor",
+    "description": "Hostname extractor",
+    "keywords": ["url", "uri", "host", "hostname", "extractor", "domain", "subdomain", "suffix", "tld"],
+    "authors": [
+        {
+            "name": "Beno!t POLASZEK",
+            "email": "bpolaszek@gmail.com",
+            "homepage": "http://www.polaszek.fr",
+            "role": "Developer"
+        }
+    ],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1",
+        "ext-mbstring": "*",
+        "danielstjules/stringy": "^3.1",
+        "guzzlehttp/guzzle": "^6.0"
+    },
+    "require-dev": {
+        "guzzlehttp/psr7": "^1.4",
+        "bentools/uri-factory": "^1.0",
+        "phpunit/phpunit": "@stable",
+        "satooshi/php-coveralls": "@stable",
+        "squizlabs/php_codesniffer": "@stable",
+        "symfony/var-dumper": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "BenTools\\HostnameExtractor\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BenTools\\HostnameExtractor\\Tests\\": "tests"
+        },
+        "files": [
+            "vendor/symfony/var-dumper/Resources/functions/dump.php"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
