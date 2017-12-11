@@ -48,7 +48,7 @@ class SuffixVisitor implements HostnameVisitorInterface
     private function findSuffix(Stringy $hostname): ?string
     {
         foreach ($this->suffixProvider->getSuffixes() as $suffix) {
-            if ($hostname->endsWith($suffix)) {
+            if ($hostname->endsWith(sprintf('.%s', $suffix))) {
                 return $suffix;
             }
         }
