@@ -34,7 +34,7 @@ As you can see, `co.uk` is considered as a suffix (otherwise, we would have cons
 
 The library parses the [Public Suffix List](https://publicsuffix.org/), which stores thousands of existing suffixes.
 
-To avoid network latency feel free to implement your own `BenTools\HostnameExtractor\SuffixProvider\SuffixProviderInterface`.
+To avoid network latency feel free to implement your own `BenTools\HostnameExtractor\SuffixProvider\SuffixProviderInterface` or to use your favorite [PSR-16](http://www.php-fig.org/psr/psr-16/) library into a `BenTools\HostnameExtractor\SuffixProvider\PSR16CacheSuffixProvider` object.
 
 ## Installation
 

@@ -15,15 +15,18 @@
     "require": {
         "php": ">=7.1",
         "ext-mbstring": "*",
+        "bentools/iterable-functions": "^1.1",
         "danielstjules/stringy": "^3.1",
         "guzzlehttp/guzzle": "^6.0"
     },
     "require-dev": {
-        "guzzlehttp/psr7": "^1.4",
         "bentools/uri-factory": "^1.0",
+        "guzzlehttp/psr7": "^1.4",
         "phpunit/phpunit": "@stable",
+        "psr/simple-cache": "^1.0",
         "satooshi/php-coveralls": "@stable",
         "squizlabs/php_codesniffer": "@stable",
+        "symfony/cache": "^4.0",
         "symfony/var-dumper": "^3.3"
     },
     "autoload": {
