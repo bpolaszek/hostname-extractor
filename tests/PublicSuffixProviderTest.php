@@ -12,7 +12,7 @@ class PublicSuffixProviderTest extends TestCase
     public function testGetSuffixes()
     {
         $provider = new PublicSuffixProvider(new Client());
-        $suffixes = $provider->getSuffixes();
+        $suffixes = iterable_to_array($provider->getSuffixes());
         $this->assertGreaterThan(8000, count($suffixes));
         foreach ($suffixes as $suffix) {
 
