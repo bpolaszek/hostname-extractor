@@ -10,7 +10,7 @@ use function Stringy\create as s;
  * Class TldVisitor
  * @internal
  */
-class TldVisitor implements HostnameVisitorInterface
+final class TldVisitor implements HostnameVisitorInterface
 {
 
     /**

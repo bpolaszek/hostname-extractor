@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BenTools\HostnameExtractor;
 
-class ParsedHostname
+final class ParsedHostname
 {
     /**
      * @var string
@@ -156,5 +156,17 @@ class ParsedHostname
     public function isIp(): bool
     {
         return $this->isIpv4() || $this->isIpv6();
+    }
+
+    /**
+     * @return ParsedHostname
+     */
+    public static function new(): self
+    {
+        static $prototype;
+        if (!isset($prototype)) {
+            $prototype = new static;
+        }
+        return clone $prototype;
     }
 }

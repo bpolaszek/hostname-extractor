@@ -9,7 +9,7 @@ use Stringy\Stringy;
  * Class Ipv4Visitor
  * @internal
  */
-class Ipv4Visitor implements HostnameVisitorInterface
+final class Ipv4Visitor implements HostnameVisitorInterface
 {
 
     /**

@@ -9,7 +9,7 @@ use Stringy\Stringy;
  * Class DomainVisitor
  * @internal
  */
-class DomainVisitor implements HostnameVisitorInterface
+final class DomainVisitor implements HostnameVisitorInterface
 {
 
     /**

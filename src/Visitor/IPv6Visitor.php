@@ -9,7 +9,7 @@ use Stringy\Stringy;
  * Class IPv6Visitor
  * @internal
  */
-class IPv6Visitor implements HostnameVisitorInterface
+final class IPv6Visitor implements HostnameVisitorInterface
 {
     /**
      * @inheritDoc

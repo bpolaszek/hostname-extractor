@@ -47,24 +47,10 @@ final class HostnameExtractor
     public function extract(string $hostname): ParsedHostname
     {
         $hostname = s($hostname);
-        $parsedHostname = new ParsedHostname();
+        $parsedHostname = ParsedHostname::new();
         foreach ($this->visitors as $visitor) {
             $visitor->visit($hostname, $parsedHostname);
         }
         return $parsedHostname;
-    }
-
-    /**
-     * @param Stringy $hostname
-     * @return null|string
-     */
-    private function findSuffix(Stringy $hostname): ?string
-    {
-        foreach ($this->suffixProvider->getSuffixes() as $suffix) {
-            if ($hostname->endsWith($suffix)) {
-                return $suffix;
-            }
-        }
-        return null;
     }
 }

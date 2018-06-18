@@ -5,7 +5,7 @@ namespace BenTools\HostnameExtractor\SuffixProvider;
 use CallbackFilterIterator;
 use GuzzleHttp\Client;
 
-class PublicSuffixProvider implements SuffixProviderInterface
+final class PublicSuffixProvider implements SuffixProviderInterface
 {
     /**
      * @var Client

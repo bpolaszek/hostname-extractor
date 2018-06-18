@@ -4,7 +4,7 @@ namespace BenTools\HostnameExtractor\SuffixProvider;
 
 use Psr\SimpleCache\CacheInterface;
 
-class PSR16CacheSuffixProvider implements SuffixProviderInterface
+final class PSR16CacheSuffixProvider implements SuffixProviderInterface
 {
     /**
      * @var CacheInterface

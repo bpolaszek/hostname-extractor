@@ -10,7 +10,7 @@ use Stringy\Stringy;
  * Class SuffixVisitor
  * @internal
  */
-class SuffixVisitor implements HostnameVisitorInterface
+final class SuffixVisitor implements HostnameVisitorInterface
 {
     /**
      * @var SuffixProviderInterface
