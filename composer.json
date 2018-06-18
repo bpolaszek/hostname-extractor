@@ -1,6 +1,6 @@
 {
     "name": "bentools/hostname-extractor",
-    "description": "Hostname extractor",
+    "description": "Hostname extractor - A library to find parts of a hostname (suffix, tld, subdomain, ...)",
     "keywords": ["url", "uri", "host", "hostname", "extractor", "domain", "subdomain", "suffix", "tld"],
     "authors": [
         {
