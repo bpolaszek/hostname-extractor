@@ -14,7 +14,7 @@ class PSR16CacheSuffixProvider implements SuffixProviderInterface
     /**
      * @var PublicSuffixProvider
      */
-    private $publicSuffixProvider;
+    private $suffixProvider;
 
     /**
      * @var string
@@ -24,15 +24,15 @@ class PSR16CacheSuffixProvider implements SuffixProviderInterface
     /**
      *  constructor.
      * @param CacheInterface       $cache
-     * @param PublicSuffixProvider $publicSuffixProvider
+     * @param PublicSuffixProvider $suffixProvider
      */
     public function __construct(
         CacheInterface $cache,
-        PublicSuffixProvider $publicSuffixProvider,
+        SuffixProviderInterface $suffixProvider,
         string $key = 'suffix_list'
     ) {
         $this->cache = $cache;
-        $this->publicSuffixProvider = $publicSuffixProvider;
+        $this->suffixProvider = $suffixProvider;
         $this->key = $key;
     }
 
@@ -42,7 +42,7 @@ class PSR16CacheSuffixProvider implements SuffixProviderInterface
     public function getSuffixes(): iterable
     {
         if (!$this->cache->has($this->key)) {
-            $suffixes = iterable_to_array($this->publicSuffixProvider->getSuffixes());
+            $suffixes = iterable_to_array($this->suffixProvider->getSuffixes());
             $this->cache->set($this->key, $suffixes);
             return $suffixes;
         }
