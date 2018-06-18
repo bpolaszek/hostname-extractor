@@ -9,7 +9,6 @@ use BenTools\HostnameExtractor\Visitor\Ipv4Visitor;
 use BenTools\HostnameExtractor\Visitor\IPv6Visitor;
 use BenTools\HostnameExtractor\Visitor\SuffixVisitor;
 use BenTools\HostnameExtractor\Visitor\TldVisitor;
-use Stringy\Stringy;
 use function Stringy\create as s;
 
 final class HostnameExtractor
