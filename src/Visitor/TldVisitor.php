@@ -3,8 +3,7 @@
 namespace BenTools\HostnameExtractor\Visitor;
 
 use BenTools\HostnameExtractor\ParsedHostname;
-use Stringy\Stringy;
-use function Stringy\create as s;
+use function BenTools\Violin\string;
 
 /**
  * Class TldVisitor
@@ -16,10 +15,10 @@ final class TldVisitor implements HostnameVisitorInterface
     /**
      * @inheritDoc
      */
-    public function visit(Stringy $hostname, ParsedHostname $parsedHostname): void
+    public function visit($hostname, ParsedHostname $parsedHostname): void
     {
         if (null !== $parsedHostname->getSuffix()) {
-            $suffix = s($parsedHostname->getSuffix());
+            $suffix = string($parsedHostname->getSuffix());
             if ($suffix->contains('.')) {
                 $suffixParts = explode('.', (string) $suffix);
                 $parsedHostname->setTld(array_pop($suffixParts));

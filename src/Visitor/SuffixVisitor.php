@@ -4,7 +4,8 @@ namespace BenTools\HostnameExtractor\Visitor;
 
 use BenTools\HostnameExtractor\ParsedHostname;
 use BenTools\HostnameExtractor\SuffixProvider\SuffixProviderInterface;
-use Stringy\Stringy;
+use function BenTools\Violin\string;
+use BenTools\Violin\Violin;
 
 /**
  * Class SuffixVisitor
@@ -28,8 +29,9 @@ final class SuffixVisitor implements HostnameVisitorInterface
     /**
      * @inheritDoc
      */
-    public function visit(Stringy $hostname, ParsedHostname $parsedHostname): void
+    public function visit($hostname, ParsedHostname $parsedHostname): void
     {
+        $hostname = string($hostname);
         if (!$parsedHostname->isIp() && $hostname->contains('.')) {
             $suffix = $this->findSuffix($hostname);
             if (null !== $suffix) {
@@ -42,10 +44,10 @@ final class SuffixVisitor implements HostnameVisitorInterface
     }
 
     /**
-     * @param Stringy $hostname
+     * @param Violin $hostname
      * @return null|string
      */
-    private function findSuffix(Stringy $hostname): ?string
+    private function findSuffix(Violin $hostname): ?string
     {
         foreach ($this->suffixProvider->getSuffixes() as $suffix) {
             if ($hostname->endsWith(sprintf('.%s', $suffix))) {

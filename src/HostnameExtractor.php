@@ -9,7 +9,7 @@ use BenTools\HostnameExtractor\Visitor\Ipv4Visitor;
 use BenTools\HostnameExtractor\Visitor\IPv6Visitor;
 use BenTools\HostnameExtractor\Visitor\SuffixVisitor;
 use BenTools\HostnameExtractor\Visitor\TldVisitor;
-use function Stringy\create as s;
+use function BenTools\Violin\string;
 
 final class HostnameExtractor
 {
@@ -45,7 +45,7 @@ final class HostnameExtractor
      */
     public function extract(string $hostname): ParsedHostname
     {
-        $hostname = s($hostname);
+        $hostname = string($hostname);
         $parsedHostname = ParsedHostname::new();
         foreach ($this->visitors as $visitor) {
             $visitor->visit($hostname, $parsedHostname);

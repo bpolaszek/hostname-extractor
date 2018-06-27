@@ -16,7 +16,7 @@
         "php": ">=7.1",
         "ext-mbstring": "*",
         "bentools/iterable-functions": "^1.1",
-        "danielstjules/stringy": "^3.1",
+        "bentools/violin": "1.0.x-dev",
         "guzzlehttp/guzzle": "^6.0"
     },
     "require-dev": {
