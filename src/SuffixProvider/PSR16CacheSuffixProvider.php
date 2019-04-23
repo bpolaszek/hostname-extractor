@@ -42,7 +42,7 @@ final class PSR16CacheSuffixProvider implements SuffixProviderInterface
     public function getSuffixes(): iterable
     {
         if (!$this->cache->has($this->key)) {
-            $suffixes = iterable_to_array($this->suffixProvider->getSuffixes());
+            $suffixes = \iterable_to_array($this->suffixProvider->getSuffixes());
             $this->cache->set($this->key, $suffixes);
             return $suffixes;
         }

@@ -16,9 +16,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use BenTools\HostnameExtractor\HostnameExtractor;
 use BenTools\HostnameExtractor\SuffixProvider\PublicSuffixProvider;
-use GuzzleHttp\Client;
 
-$extractor = new HostnameExtractor(new PublicSuffixProvider(new Client()));
+$extractor = new HostnameExtractor(new PublicSuffixProvider());
 $hostname = $extractor->extract('my.preferred.domain.co.uk');
 dump($hostname->getSubdomain()); // my.preferred
 dump($hostname->getDomain()); // domain

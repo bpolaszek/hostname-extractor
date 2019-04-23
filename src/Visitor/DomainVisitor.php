@@ -20,11 +20,11 @@ final class DomainVisitor implements HostnameVisitorInterface
         $hostname = string($hostname);
         if (!$parsedHostname->isIp()) {
             $suffix = $parsedHostname->getSuffix();
-            $withoutSuffix = null !== $suffix ? $hostname->removeRight(sprintf('.%s', $suffix)) : $hostname;
+            $withoutSuffix = null !== $suffix ? $hostname->removeRight(\sprintf('.%s', $suffix)) : $hostname;
             if ($withoutSuffix->contains('.')) {
-                $domainParts = explode('.', (string) $withoutSuffix);
-                $parsedHostname->setDomain(array_pop($domainParts));
-                $parsedHostname->setSubdomain(implode('.', $domainParts));
+                $domainParts = \explode('.', (string) $withoutSuffix);
+                $parsedHostname->setDomain(\array_pop($domainParts));
+                $parsedHostname->setSubdomain(\implode('.', $domainParts));
             } else {
                 $parsedHostname->setDomain((string) $withoutSuffix);
             }

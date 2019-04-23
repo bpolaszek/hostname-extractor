@@ -14,21 +14,17 @@ use function BenTools\Violin\string;
 final class HostnameExtractor
 {
     /**
-     * @var SuffixProviderInterface
-     */
-    private $suffixProvider;
-
-    /**
      * @var HostnameVisitorInterface[]
      */
-    private $visitors = [];
+    private $visitors;
 
     /**
-     * @inheritDoc
+     * HostnameExtractor constructor.
+     *
+     * @param SuffixProviderInterface|null $suffixProvider
      */
-    public function __construct(SuffixProviderInterface $suffixProvider)
+    public function __construct(SuffixProviderInterface $suffixProvider = null)
     {
-        $this->suffixProvider = $suffixProvider;
         $this->visitors = [
             new IPv6Visitor(),
             new Ipv4Visitor(),

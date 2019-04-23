@@ -16,7 +16,7 @@ final class Ipv4Visitor implements HostnameVisitorInterface
      */
     public function visit($hostname, ParsedHostname $parsedHostname): void
     {
-        if (false !== filter_var((string) $hostname, FILTER_VALIDATE_IP)) {
+        if (false !== \filter_var((string) $hostname, FILTER_VALIDATE_IP)) {
             $parsedHostname->setIsIpv4(true);
         }
     }

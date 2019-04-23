@@ -20,8 +20,8 @@ final class TldVisitor implements HostnameVisitorInterface
         if (null !== $parsedHostname->getSuffix()) {
             $suffix = string($parsedHostname->getSuffix());
             if ($suffix->contains('.')) {
-                $suffixParts = explode('.', (string) $suffix);
-                $parsedHostname->setTld(array_pop($suffixParts));
+                $suffixParts = \explode('.', (string) $suffix);
+                $parsedHostname->setTld(\array_pop($suffixParts));
             } else {
                 $parsedHostname->setTld((string) $suffix);
             }

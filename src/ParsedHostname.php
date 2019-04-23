@@ -56,9 +56,9 @@ final class ParsedHostname
      */
     public function getSuffixedDomain(): string
     {
-        return implode(
+        return \implode(
             '.',
-            array_filter(
+            \array_filter(
                 [
                     $this->getDomain(),
                     $this->getSuffix(),

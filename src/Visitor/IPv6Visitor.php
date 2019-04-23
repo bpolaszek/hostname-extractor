@@ -19,7 +19,7 @@ final class IPv6Visitor implements HostnameVisitorInterface
         $hostname = string($hostname);
         if ($hostname->startsWith('[') && $hostname->endsWith(']')) {
             $ipv6 = (string) $hostname->removeLeft('[')->removeRight(']');
-            if (filter_var($ipv6, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+            if (\filter_var($ipv6, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
                 $parsedHostname->setIsIpv6(true);
             }
         }

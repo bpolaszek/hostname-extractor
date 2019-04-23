@@ -2,6 +2,7 @@
 
 namespace BenTools\HostnameExtractor\SuffixProvider;
 
+use function BenTools\Violin\string;
 use CallbackFilterIterator;
 use GuzzleHttp\Client;
 
@@ -23,14 +24,17 @@ final class PublicSuffixProvider implements SuffixProviderInterface
     private $cache;
 
     /**
-     * @inheritDoc
+     * PublicSuffixProvider constructor.
+     *
+     * @param Client|null $client
+     * @param string      $listUrl
      */
     public function __construct(
-        Client $client,
+        Client $client = null,
         string $listUrl = 'https://publicsuffix.org/list/public_suffix_list.dat'
     ) {
     
-        $this->client = $client;
+        $this->client = $client ?? new Client();
         $this->listUrl = $listUrl;
     }
 
@@ -43,14 +47,14 @@ final class PublicSuffixProvider implements SuffixProviderInterface
             $content = $this->client->get($this->listUrl)->getBody();
             // Create an iterator for the document
             $iterator = (function (string $content) {
-                $tok = strtok($content, "\r\n");
+                $tok = \strtok($content, "\r\n");
                 while (false !== $tok) {
                     $line = $tok;
-                    $tok = strtok("\r\n");
+                    $tok = \strtok("\r\n");
 
                     // Remove "*." prefixes
-                    if (0 === strpos($line, '*.')) {
-                        $line = substr($line, 2, mb_strlen($line) - 2);
+                    if (0 === \strpos($line, '*.')) {
+                        $line = \substr($line, 2, mb_strlen($line) - 2);
                     }
 
                     yield $line;
@@ -59,13 +63,13 @@ final class PublicSuffixProvider implements SuffixProviderInterface
 
             // Ignore commented lines
             $valid = function (string $string) {
-                return 0 !== strpos($string, '//');
+                return 0 !== \strpos($string, '//');
             };
-            $suffixes = iterator_to_array(new CallbackFilterIterator($iterator, $valid));
+            $suffixes = \iterator_to_array(new CallbackFilterIterator($iterator, $valid));
 
             // Sort by suffix length
-            usort($suffixes, function ($a, $b) {
-                return mb_strlen($b) <=> mb_strlen($a);
+            \usort($suffixes, function (string $a, string $b) {
+                return \count(string($b)) <=> \count(string($a));
             });
 
             $this->cache = $suffixes;
@@ -78,6 +82,6 @@ final class PublicSuffixProvider implements SuffixProviderInterface
     public function getSuffixes(): iterable
     {
         $this->fetchSuffixes();
-        yield from $this->cache ?? new \EmptyIterator();
+        yield from ($this->cache ?? []);
     }
 }

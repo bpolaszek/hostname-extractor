@@ -3,9 +3,10 @@
 namespace BenTools\HostnameExtractor\Visitor;
 
 use BenTools\HostnameExtractor\ParsedHostname;
+use BenTools\HostnameExtractor\SuffixProvider\NaiveSuffixProvider;
 use BenTools\HostnameExtractor\SuffixProvider\SuffixProviderInterface;
-use function BenTools\Violin\string;
 use BenTools\Violin\Violin;
+use function BenTools\Violin\string;
 
 /**
  * Class SuffixVisitor
@@ -21,9 +22,9 @@ final class SuffixVisitor implements HostnameVisitorInterface
     /**
      * @inheritDoc
      */
-    public function __construct(SuffixProviderInterface $suffixProvider)
+    public function __construct(SuffixProviderInterface $suffixProvider = null)
     {
-        $this->suffixProvider = $suffixProvider;
+        $this->suffixProvider = $suffixProvider ?? new NaiveSuffixProvider();
     }
 
     /**
@@ -37,8 +38,8 @@ final class SuffixVisitor implements HostnameVisitorInterface
             if (null !== $suffix) {
                 $parsedHostname->setSuffix($suffix);
             } else {
-                $hostnameParts = explode('.', $hostname);
-                $parsedHostname->setSuffix(array_pop($hostnameParts));
+                $hostnameParts = \explode('.', $hostname);
+                $parsedHostname->setSuffix(\array_pop($hostnameParts));
             }
         }
     }
@@ -50,7 +51,7 @@ final class SuffixVisitor implements HostnameVisitorInterface
     private function findSuffix(Violin $hostname): ?string
     {
         foreach ($this->suffixProvider->getSuffixes() as $suffix) {
-            if ($hostname->endsWith(sprintf('.%s', $suffix))) {
+            if ($hostname->endsWith(\sprintf('.%s', $suffix))) {
                 return $suffix;
             }
         }
